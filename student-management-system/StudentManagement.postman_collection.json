@@ -1,0 +1,217 @@
+{
+  "info": {
+    "name": "Student Management API",
+    "description": "Complete Postman collection for Student Management System built with Spring Boot",
+    "_postman_id": "student-mgmt-collection-001",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Add Student (POST)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Abishek\",\n  \"email\": \"abishek@gmail.com\",\n  \"department\": \"ECE\",\n  \"phoneNumber\": \"9876543210\",\n  \"cgpa\": 8.37\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/students",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "students"]
+        },
+        "description": "Creates a new student record. Returns 201 Created on success."
+      }
+    },
+    {
+      "name": "2. Add Student - Priya (POST)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Priya Sharma\",\n  \"email\": \"priya@gmail.com\",\n  \"department\": \"CSE\",\n  \"phoneNumber\": \"9123456780\",\n  \"cgpa\": 9.1\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/students",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "students"]
+        },
+        "description": "Add a second student for testing list operations."
+      }
+    },
+    {
+      "name": "3. Add Student - Rahul (POST)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Rahul Verma\",\n  \"email\": \"rahul@gmail.com\",\n  \"department\": \"ECE\",\n  \"phoneNumber\": \"9988776655\",\n  \"cgpa\": 7.85\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/students",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "students"]
+        },
+        "description": "Add a third student for testing department filter."
+      }
+    },
+    {
+      "name": "4. Get All Students (GET)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/students",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "students"]
+        },
+        "description": "Returns all students. Status: 200 OK."
+      }
+    },
+    {
+      "name": "5. Get Student By ID (GET)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/students/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "students", "1"]
+        },
+        "description": "Returns student with ID 1. Change 1 to any ID. Returns 404 if not found."
+      }
+    },
+    {
+      "name": "6. Get Student - Not Found (GET 404)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/students/999",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "students", "999"]
+        },
+        "description": "Should return 404 Not Found with error message."
+      }
+    },
+    {
+      "name": "7. Search by Department (GET)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/students?department=ECE",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "students"],
+          "query": [
+            {
+              "key": "department",
+              "value": "ECE"
+            }
+          ]
+        },
+        "description": "Returns only ECE students. Change ECE to CSE or any department name."
+      }
+    },
+    {
+      "name": "8. Sort by CGPA (GET)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/students?sortByCgpa=true",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "students"],
+          "query": [
+            {
+              "key": "sortByCgpa",
+              "value": "true"
+            }
+          ]
+        },
+        "description": "Returns all students sorted by CGPA from highest to lowest."
+      }
+    },
+    {
+      "name": "9. Update Student (PUT)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Abishek Kumar\",\n  \"email\": \"abishek.kumar@gmail.com\",\n  \"department\": \"ECE\",\n  \"phoneNumber\": \"9876543210\",\n  \"cgpa\": 8.75\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/students/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "students", "1"]
+        },
+        "description": "Updates student with ID 1. Change the ID in URL as needed. Returns 200 OK."
+      }
+    },
+    {
+      "name": "10. Delete Student (DELETE)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/students/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "students", "1"]
+        },
+        "description": "Deletes student with ID 1. Returns 200 OK with success message."
+      }
+    },
+    {
+      "name": "11. Validation Error Test (POST)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"\",\n  \"email\": \"not-valid-email\",\n  \"department\": \"ECE\",\n  \"phoneNumber\": \"123\",\n  \"cgpa\": 15.0\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/students",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "students"]
+        },
+        "description": "Should return 400 Bad Request with all validation error messages."
+      }
+    }
+  ]
+}
