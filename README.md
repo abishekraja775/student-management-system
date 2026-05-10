@@ -1,6 +1,6 @@
 # 🎓 Student Management System
 
-A clean, beginner-friendly **REST API** built with **Spring Boot** and **PostgreSQL** that performs full CRUD operations on student records — designed for learning and fresher placement portfolios.
+A clean, **REST API** built with **Spring Boot** and **PostgreSQL** that performs full CRUD operations on student records — designed for learning and fresher placement portfolios.
 
 ---
 
